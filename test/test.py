@@ -1,4 +1,4 @@
-from flask import Flask, request, Response, render_template
+from flask import Flask, request, Response, render_template_string
 from bs4 import BeautifulSoup
 import requests
 from urllib.parse import urljoin
@@ -8,7 +8,25 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template_string('''
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Proxyサイト</title>
+    </head>
+    <body>
+        <h1>Proxyサイト</h1>
+        <form action="/proxy" method="get">
+            <label for="url">URLを入力してください:</label><br>
+            <input type="text" id="url" name="url"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+    </html>
+    ''')
 
 @app.route('/proxy', methods=['GET'])
 def proxy():
