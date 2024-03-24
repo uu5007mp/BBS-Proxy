@@ -40,6 +40,8 @@ def proxy():
     for tag in soup.find_all('a', href=True):
         tag['href'] = '/proxy?url=' + urljoin(url, tag['href'])
     for tag in soup.find_all(['link', 'script', 'img'], src=True):
+        if tag['src'].startswith('data:'):
+            continue  # Skip if it's already a data URL
         if not tag['src'].startswith(('http://', 'https://')):
             resource_url = urljoin(url, tag['src'])
             resource_response = requests.get(resource_url)
@@ -49,6 +51,8 @@ def proxy():
             else:
                 tag['src'] = resource_url
     for tag in soup.find_all('link', rel='stylesheet', href=True):
+        if tag['href'].startswith('data:'):
+            continue  # Skip if it's already a data URL
         if not tag['href'].startswith(('http://', 'https://')):
             resource_url = urljoin(url, tag['href'])
             resource_response = requests.get(resource_url)
@@ -56,6 +60,8 @@ def proxy():
             tag['href'] = f'data:{content_type};base64,{base64.b64encode(resource_response.content).decode()}'
 
     for tag in soup.find_all('video', src=True):
+        if tag['src'].startswith('data:'):
+            continue  # Skip if it's already a data URL
         if not tag['src'].startswith(('http://', 'https://')):
             resource_url = urljoin(url, tag['src'])
             resource_response = requests.get(resource_url)
@@ -63,6 +69,8 @@ def proxy():
             tag['src'] = f'data:{content_type};base64,{base64.b64encode(resource_response.content).decode()}'
 
     for tag in soup.find_all('link', rel='icon', href=True):
+        if tag['href'].startswith('data:'):
+            continue  # Skip if it's already a data URL
         if not tag['href'].startswith(('http://', 'https://')):
             resource_url = urljoin(url, tag['href'])
             resource_response = requests.get(resource_url)
