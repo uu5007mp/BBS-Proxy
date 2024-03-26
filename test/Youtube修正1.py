@@ -21,23 +21,76 @@ def block_ip():
 @app.route('/')
 def home():
     return render_template_string('''
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Proxyサイト</title>
-    </head>
-    <body>
-        <h1>Proxyサイト</h1>
-        <form action="/proxy" method="get">
-            <label for="url">URLを入力してください:</label><br>
-            <input type="text" id="url" name="url"><br><br>
-            <input type="submit" value="Submit">
-        </form>
-    </body>
-    </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxyサイト</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 20px;
+            color: #333;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Proxyサイト</h1>
+    <form action="/proxy" method="get">
+        <label for="url">URLを入力してください:</label><br>
+        <input type="text" id="url" name="url"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
     ''')
 
 @app.route('/proxy', methods=['GET'])
