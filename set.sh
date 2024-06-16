@@ -19,7 +19,7 @@ check_and_install npm
 
 git clone https://github.com/uu5007mp4/BBS-Proxy.git
 
-cd Ultraviolet-App
+cd BBS-Proxy
 
 npm install
 npm start
