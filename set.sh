@@ -17,7 +17,7 @@ apt update
 check_and_install git
 check_and_install npm
 
-git clone https://github.com/hirotomoki12345/Ultraviolet-App.git
+git clone https://github.com/uu5007mp4/BBS-Proxy.git
 
 cd Ultraviolet-App
 
