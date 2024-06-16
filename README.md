@@ -5,7 +5,9 @@
 ### 終
 ## 注意
 ~~debian linuxじゃないとできないです。(apt入れたらできるかも(試していません))~~
+
 他のディストリビューションにも対応させました。
+
 localhost以外はHTTPSじゃないと使えません。
 ## 使わせてもらったもの
 Ultraviolet:https://github.com/titaniumnetwork-dev/Ultraviolet
