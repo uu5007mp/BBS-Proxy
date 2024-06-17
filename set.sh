@@ -37,7 +37,7 @@ else
     exit 1
 fi
 
-git clone https://github.com/uu5007mp4/BBS-Proxy.git
+git clone https://github.com/uu5007mp/BBS-Proxy.git
 cd BBS-Proxy
 npm install
 npm start
