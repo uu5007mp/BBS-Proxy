@@ -9,6 +9,10 @@ logの様子を見るには
 ```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/log.sh | sudo bash```
 で見れます
 ### 終
+## 止めるには
+```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/stop.sh | sudo bash```
+## 削除するには
+```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/delete.sh | sudo bash```
 ## 注意
 ~~debian linuxじゃないとできないです。(apt入れたらできるかも(試していません))~~
 
