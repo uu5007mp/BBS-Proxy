@@ -2,9 +2,13 @@
 日本向けに軽量化して作ったWEBProxyです。
 ## ~ 導入方法&起動方法 ~
 ~~sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/set.sh | sudo bash~~
+
 ↑これだとエラーが出て停止することがあるので、
+
 ```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/set_pm2.sh | sudo bash```
+
 ↑これだったらエラーが出て停止しても、再起動してくれます。logの様子を見るには 
+
 ```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/log.sh | sudo bash```
 で見れます
 ### 終
