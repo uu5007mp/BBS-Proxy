@@ -63,7 +63,6 @@ else
     exit 1
 fi
 
-# PM2をグローバルにインストール
 if ! npm install pm2 -g; then
     echo "Failed to install PM2 globally"
     exit 1
