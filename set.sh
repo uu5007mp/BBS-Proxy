@@ -63,16 +63,24 @@ else
     exit 1
 fi
 
-if ! git clone https://github.com/uu5007mp/BBS-Proxy.git; then
-    echo "Failed to clone the repository"
-    exit 1
+if [ ! -d "BBS-Proxy" ]; then
+    if ! git clone https://github.com/uu5007mp/BBS-Proxy.git; then
+        echo "Failed to clone the repository"
+        exit 1
+    fi
+else
+    echo "Directory BBS-Proxy already exists, skipping clone"
 fi
 
 cd BBS-Proxy || { echo "Failed to change directory to BBS-Proxy"; exit 1; }
 
-if ! npm install; then
-    echo "Failed to install npm dependencies"
-    exit 1
+if [ ! -d "node_modules" ]; then
+    if ! npm install; then
+        echo "Failed to install npm dependencies"
+        exit 1
+    fi
+else
+    echo "Dependencies already installed, skipping npm install"
 fi
 
 if ! npm start; then
