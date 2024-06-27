@@ -1,2 +1,1 @@
-cd BBS-Proxy
-pm2 stop
+pm2 stop bbs-proxy
