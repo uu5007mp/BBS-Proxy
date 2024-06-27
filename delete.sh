@@ -1,4 +1,4 @@
-cd BBS-Proxy
-pm2 stop
+pm2 stop bbs-proxy
 cd
+cd BBS-Proxy
 rm -rf BBS-Proxy
