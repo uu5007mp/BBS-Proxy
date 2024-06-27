@@ -11,7 +11,7 @@ logの様子を見るには
 で見れます
 ### 終
 ## 止めるには
-```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/stop.sh | sudo bash```
+```pm2 stop bbs-proxy```
 ## 削除するには
 ```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/delete.sh | sudo bash```
 ## 注意
