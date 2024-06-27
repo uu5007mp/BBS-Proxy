@@ -6,7 +6,7 @@
 
 logの様子を見るには 
 
-```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/log.sh | sudo bash```
+```pm2 logs bbs-proxy```
 で見れます
 ### 終
 ## 止めるには
