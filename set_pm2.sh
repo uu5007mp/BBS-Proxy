@@ -136,7 +136,6 @@ show_license() {
     fi
 }
 
-# メニューを表示
 echo "Please select an option:"
 echo "1) Start new installation"
 echo "2) Delete logs"
