@@ -40,59 +40,135 @@ install_packages() {
     done
 }
 
-if [ -f /etc/debian_version ]; then
-    if ! apt update; then
-        echo "Failed to update package list on Debian-based system"
+install_and_start() {
+    if [ -f /etc/debian_version ]; then
+        # apt updateコマンドでエラーを無視する
+        if ! apt-get update -o Acquire::AllowInsecureRepositories=true 2>/dev/null; then
+            echo "Some repositories failed to update, but continuing..."
+        fi
+        install_packages install_debian git npm
+    elif [ -f /etc/arch-release ]; then
+        if ! pacman -Syu --noconfirm; then
+            echo "Failed to update package list on Arch-based system"
+            exit 1
+        fi
+        install_packages install_arch git npm
+    elif [ -f /etc/redhat-release ]; then
+        if ! yum update -y; then
+            echo "Failed to update package list on RedHat-based system"
+            exit 1
+        fi
+        install_packages install_redhat git npm
+    else
+        echo "Unsupported distribution"
         exit 1
     fi
-    install_packages install_debian git npm
-elif [ -f /etc/arch-release ]; then
-    if ! pacman -Syu --noconfirm; then
-        echo "Failed to update package list on Arch-based system"
+
+    if ! npm install pm2 -g; then
+        echo "Failed to install PM2 globally"
         exit 1
     fi
-    install_packages install_arch git npm
-elif [ -f /etc/redhat-release ]; then
-    if ! yum update -y; then
-        echo "Failed to update package list on RedHat-based system"
+
+    if [ ! -d "BBS-Proxy" ]; then
+        if ! git clone https://github.com/uu5007mp/BBS-Proxy.git; then
+            echo "Failed to clone the repository"
+            exit 1
+        fi
+    else
+        echo "Directory BBS-Proxy already exists, skipping clone"
+    fi
+
+    cd BBS-Proxy || { echo "Failed to change directory to BBS-Proxy"; exit 1; }
+
+    if [ ! -d "node_modules" ]; then
+        if ! npm install; then
+            echo "Failed to install npm dependencies"
+            exit 1
+        fi
+    else
+        echo "Dependencies already installed, skipping npm install"
+    fi
+
+    if ! pm2 start npm --name "bbs-proxy" -- start; then
+        echo "Failed to start the application with PM2"
         exit 1
     fi
-    install_packages install_redhat git npm
-else
-    echo "Unsupported distribution"
-    exit 1
-fi
 
-if ! npm install pm2 -g; then
-    echo "Failed to install PM2 globally"
-    exit 1
-fi
+    pm2 save
 
-if [ ! -d "BBS-Proxy" ]; then
-    if ! git clone https://github.com/uu5007mp/BBS-Proxy.git; then
-        echo "Failed to clone the repository"
-        exit 1
+    echo "BBS-Proxy application started successfully with PM2"
+}
+
+delete_logs() {
+    if [ -d "BBS-Proxy" ]; then
+        cd BBS-Proxy || { echo "Failed to change directory to BBS-Proxy"; exit 1; }
+        if [ -d "logs" ]; then
+            rm -rf logs/*
+            echo "Logs deleted successfully."
+        else
+            echo "No logs directory found."
+        fi
+    else
+        echo "BBS-Proxy directory not found."
     fi
-else
-    echo "Directory BBS-Proxy already exists, skipping clone"
-fi
+}
 
-cd BBS-Proxy || { echo "Failed to change directory to BBS-Proxy"; exit 1; }
-
-if [ ! -d "node_modules" ]; then
-    if ! npm install; then
-        echo "Failed to install npm dependencies"
-        exit 1
+show_logs() {
+    if [ -d "BBS-Proxy/logs" ]; then
+        cat BBS-Proxy/logs/*
+    else
+        echo "No logs found."
     fi
-else
-    echo "Dependencies already installed, skipping npm install"
-fi
+}
 
-if ! pm2 start npm --name "bbs-proxy" -- start; then
-    echo "Failed to start the application with PM2"
-    exit 1
-fi
+show_details() {
+    echo "BBS-Proxy version: $(git -C BBS-Proxy describe --tags 2>/dev/null || echo 'N/A')"
+    echo "Node.js version: $(node -v)"
+    echo "npm version: $(npm -v)"
+    echo "PM2 version: $(pm2 -v)"
+}
 
-pm2 save
+show_license() {
+    if [ -f "BBS-Proxy/LICENSE" ]; then
+        cat BBS-Proxy/LICENSE
+    else
+        echo "No LICENSE file found."
+    fi
+}
 
-echo "BBS-Proxy application started successfully with PM2"
+# メニューを表示
+echo "Please select an option:"
+echo "1) Start new installation"
+echo "2) Delete logs"
+echo "3) Show logs"
+echo "4) Show details"
+echo "5) Show license"
+echo "6) Exit"
+
+read -rp "Enter your choice [1-6]: " choice
+
+case $choice in
+    1)
+        install_and_start
+        ;;
+    2)
+        delete_logs
+        ;;
+    3)
+        show_logs
+        ;;
+    4)
+        show_details
+        ;;
+    5)
+        show_license
+        ;;
+    6)
+        echo "Exiting."
+        exit 0
+        ;;
+    *)
+        echo "Invalid option."
+        exit 1
+        ;;
+esac
