@@ -1,5 +1,7 @@
 #!/bin/bash
 
+npm install -g pm2
+
 echo "Select an option:"
 echo "1) Start the application"
 echo "2) Stop and delete the application"
