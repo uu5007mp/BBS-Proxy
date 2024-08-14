@@ -14,9 +14,8 @@ if [ "$CHOICE" == "1" ]; then
     git clone https://github.com/hirotomoki12345/youtube.git
     cd youtube
     npm install
-    read -p "Please enter the port number: " PORT
-    pm2 start npm --name "youtube-app" -- start --PORT=$PORT
-    echo "Application started on port $PORT."
+    pm2 start npm --name "youtube-app" -- start 
+    echo "Application started on port 3010."
 
 elif [ "$CHOICE" == "2" ]; then
     pm2 stop "youtube-app"
