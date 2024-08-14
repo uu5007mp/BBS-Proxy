@@ -42,7 +42,6 @@ install_packages() {
 
 install_and_start() {
     if [ -f /etc/debian_version ]; then
-        # apt updateコマンドでエラーを無視する
         if ! apt-get update -o Acquire::AllowInsecureRepositories=true 2>/dev/null; then
             echo "Some repositories failed to update, but continuing..."
         fi
@@ -99,15 +98,10 @@ install_and_start() {
     echo "BBS-Proxy application started successfully with PM2"
 }
 
-delete_logs() {
+delete_application() {
     if [ -d "BBS-Proxy" ]; then
-        cd BBS-Proxy || { echo "Failed to change directory to BBS-Proxy"; exit 1; }
-        if [ -d "logs" ]; then
-            rm -rf logs/*
-            echo "Logs deleted successfully."
-        else
-            echo "No logs directory found."
-        fi
+        rm -rf BBS-Proxy
+        echo "Application directory BBS-Proxy deleted successfully."
     else
         echo "BBS-Proxy directory not found."
     fi
@@ -127,9 +121,10 @@ show_details() {
     echo "npm version: $(npm -v)"
     echo "PM2 version: $(pm2 -v)"
 }
+
 youtube() {
-cd BBS-Proxy
-sudo bash ./youtube-downloader.sh
+    cd BBS-Proxy
+    sudo bash ./youtube-downloader.sh
 }
 
 show_license() {
@@ -139,6 +134,7 @@ show_license() {
         echo "No LICENSE file found."
     fi
 }
+
 clear
 echo " ____  _               ____              _        "
 echo "| __ )| | ___   __ _  | __ )  ___   ___ | | _____ "
@@ -149,7 +145,7 @@ echo "               |___/                              "
 
 echo "Please select an option:"
 echo "1) Start new installation"
-echo "2) Delete logs"
+echo "2) Delete application"
 echo "3) Show logs"
 echo "4) Show details"
 echo "5) youtube"
@@ -162,7 +158,7 @@ case $choice in
         install_and_start
         ;;
     2)
-        delete_logs
+        delete_application
         ;;
     3)
         show_logs
