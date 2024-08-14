@@ -127,6 +127,9 @@ show_details() {
     echo "npm version: $(npm -v)"
     echo "PM2 version: $(pm2 -v)"
 }
+youtube() {
+sudo bash youtube-downloader.sh
+}
 
 show_license() {
     if [ -f "BBS-Proxy/LICENSE" ]; then
@@ -148,7 +151,7 @@ echo "1) Start new installation"
 echo "2) Delete logs"
 echo "3) Show logs"
 echo "4) Show details"
-echo "5) Show license"
+echo "5) youtube"
 echo "6) Exit"
 
 read -rp "Enter your choice [1-6]: " choice
@@ -167,7 +170,7 @@ case $choice in
         show_details
         ;;
     5)
-        show_license
+        youtube
         ;;
     6)
         echo "Exiting."
