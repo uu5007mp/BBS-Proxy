@@ -1,6 +1,12 @@
 #!/bin/bash
 
 npm install -g pm2
+clear
+echo " ____                             _                      _    "
+echo "|  _ \ ___  __ _ _ __  _ __   ___| |___      _____  _ __| | __"
+echo "| |_) / __|/ _\` | '_ \| '_ \ / _ \ __\ \ /\ / / _ \| '__| |/ /"
+echo "|  __/\__ \ (_| | | | | | | |  __/ |_ \ V  V / (_) | |  |   < "
+echo "|_|   |___/\__,_|_| |_|_| |_|\___|\__| \_/\_/ \___/|_|  |_|\_\\"
 
 echo "Select an option:"
 echo "1) Start the application"
@@ -16,6 +22,7 @@ if [ "$CHOICE" == "1" ]; then
     npm install
     pm2 start npm --name "youtube-app" -- start 
     echo "Application started on port 3010."
+    cd -
 
 elif [ "$CHOICE" == "2" ]; then
     pm2 stop "youtube-app"
