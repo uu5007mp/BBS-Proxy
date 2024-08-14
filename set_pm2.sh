@@ -135,6 +135,13 @@ show_license() {
         echo "No LICENSE file found."
     fi
 }
+clear
+echo " ____  _               ____              _        "
+echo "| __ )| | ___   __ _  | __ )  ___   ___ | | _____ "
+echo "|  _ \| |/ _ \ / _\` | |  _ \ / _ \ / _ \| |/ / __|"
+echo "| |_) | | (_) | (_| | | |_) | (_) | (_) |   <\__ \\"
+echo "|____/|_|\___/ \__, | |____/ \___/ \___/|_|\_\___/"
+echo "               |___/                              "
 
 echo "Please select an option:"
 echo "1) Start new installation"
