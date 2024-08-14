@@ -1,7 +1,7 @@
 Youtube Downloader
 
 
-https://github.com/hirotomoki12345/youtube.git
+./youtube-downloader.sh
 
 npm i
 
