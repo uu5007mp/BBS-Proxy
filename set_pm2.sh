@@ -128,7 +128,7 @@ show_details() {
     echo "PM2 version: $(pm2 -v)"
 }
 youtube() {
-sudo bash youtube-downloader.sh
+sudo bash ./youtube-downloader.sh
 }
 
 show_license() {
