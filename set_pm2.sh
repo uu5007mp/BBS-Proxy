@@ -128,6 +128,7 @@ show_details() {
     echo "PM2 version: $(pm2 -v)"
 }
 youtube() {
+cd BBS-Proxy
 sudo bash ./youtube-downloader.sh
 }
 
