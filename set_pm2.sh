@@ -99,6 +99,15 @@ install_and_start() {
 }
 
 delete_application() {
+    if pm2 list | grep -q 'bbs-proxy'; then
+        pm2 stop bbs-proxy
+        pm2 delete bbs-proxy
+        echo "PM2 application 'bbs-proxy' stopped and deleted successfully."
+    else
+        echo "PM2 application 'bbs-proxy' not found."
+    fi
+
+    # BBS-Proxyディレクトリを削除
     if [ -d "BBS-Proxy" ]; then
         rm -rf BBS-Proxy
         echo "Application directory BBS-Proxy deleted successfully."
@@ -106,6 +115,7 @@ delete_application() {
         echo "BBS-Proxy directory not found."
     fi
 }
+
 
 show_logs() {
     if [ -d "BBS-Proxy/logs" ]; then
