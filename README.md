@@ -2,8 +2,7 @@
 日本向けに軽量化して作ったWEBProxyです。
 ## ~ 導入方法&起動方法 ~
 
-```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/set_pm2.sh -o set.sh```
-```bash ./set.sh```
+```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/set_pm2.sh -o set.sh && bash ./set.sh```
 
 logの様子を見るには 
 

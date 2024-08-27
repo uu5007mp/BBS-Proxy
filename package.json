@@ -20,7 +20,7 @@
     "@mercuryworkshop/epoxy-transport": "^2.1.8",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.7",
     "express": "^4.18.2",
-    "ultraviolet-static": "github:hirotomoki12345/Ultraviolet-psannetwork",
+    "ultraviolet-static": "github:elakodomo/Ultraviolet-Static",
     "wisp-server-node": "^1.1.3",
     "ws": "^8.17.1"
   },
