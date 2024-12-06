@@ -16,7 +16,7 @@
   "author": "",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@mercuryworkshop/bare-mux": "^2.0.4",
+    "@mercuryworkshop/bare-mux": "^2.1.7",
     "@mercuryworkshop/epoxy-transport": "^2.1.8",
     "@titaniumnetwork-dev/ultraviolet": "^3.2.7",
     "express": "^4.21.0",
