@@ -162,9 +162,10 @@ echo "Please select an option:"
 echo "1) Start new installation"
 echo "2) Delete application"
 echo "3) Show logs"
-echo "4) Show details"
-echo "5) youtube"
-echo "6) Exit"
+echo "4) PM2_logs"
+echo "5) Show details"
+echo "6) youtube"
+echo "7) Exit"
 
 read -rp "Enter your choice [1-6]: " choice
 
