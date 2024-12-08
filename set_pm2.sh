@@ -126,6 +126,10 @@ show_logs() {
     fi
 }
 
+PM2_logs() {
+    pm2 logs bbs-proxy
+}
+
 show_details() {
     echo "BBS-Proxy version: $(git -C BBS-Proxy describe --tags 2>/dev/null || echo 'N/A')"
     echo "Node.js version: $(node -v)"
@@ -175,12 +179,15 @@ case $choice in
         show_logs
         ;;
     4)
-        show_details
+        PM2_logs
         ;;
     5)
-        youtube
+        show_details
         ;;
     6)
+        youtube
+        ;;
+    7)
         echo "Exiting."
         exit 0
         ;;
