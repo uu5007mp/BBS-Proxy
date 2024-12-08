@@ -167,7 +167,7 @@ echo "5) Show details"
 echo "6) youtube"
 echo "7) Exit"
 
-read -rp "Enter your choice [1-6]: " choice
+read -rp "Enter your choice [1-7]: " choice
 
 case $choice in
     1)
