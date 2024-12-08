@@ -9,7 +9,8 @@ sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/set_pm2.
 
 ### logの様子を見るには
 
-``` pm2 logs bbs-proxy
+```
+pm2 logs bbs-proxy
 ```
 
 で見れます
@@ -18,11 +19,14 @@ sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/set_pm2.
 
 ## 止めるには
 
-```pm2 stop bbs-proxy
+```
+pm2 stop bbs-proxy
 ```
 
 ## 削除するには
-```sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/delete.sh | sudo bash
+
+```
+sudo curl -Ls https://raw.githubusercontent.com/uu5007mp/BBS-Proxy/main/delete.sh | sudo bash
 ```
 
 注意
