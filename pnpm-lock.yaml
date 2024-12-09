@@ -24,8 +24,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       ultraviolet-static:
-        specifier: github:titaniumnetwork-dev/Ultraviolet-Static
-        version: https://codeload.github.com/titaniumnetwork-dev/Ultraviolet-Static/tar.gz/d9a30997be87d0f25f36c85e2fc851528d8f8e23
+        specifier: github:hirotomoki12345/Ultraviolet-psannetwork
+        version: git+https://git@github.com:hirotomoki12345/Ultraviolet-psannetwork.git#9fc22e4f5f6bc26c5ede1b4ea61c6c863e7618a0
       wisp-server-node:
         specifier: ^1.1.7
         version: 1.1.7
@@ -235,8 +235,8 @@ packages:
     resolution: {integrity: sha512-Xd8lFX4LM9QEEwxQpF9J9NTUh8pmdJO0cyRJhFiDoLTk2eH8FXlRv2IFGYVadZpqI3j8fhNrSdKCeYPxiAhLXw==}
     engines: {node: '>=18'}
 
-  cross-spawn@7.0.3:
-    resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+  cross-spawn@7.0.6:
+    resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
   debug@4.3.7:
@@ -700,8 +700,8 @@ packages:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
 
-  ultraviolet-static@https://codeload.github.com/titaniumnetwork-dev/Ultraviolet-Static/tar.gz/d9a30997be87d0f25f36c85e2fc851528d8f8e23:
-    resolution: {tarball: https://codeload.github.com/titaniumnetwork-dev/Ultraviolet-Static/tar.gz/d9a30997be87d0f25f36c85e2fc851528d8f8e23}
+  ultraviolet-static@git+https://git@github.com:hirotomoki12345/Ultraviolet-psannetwork.git#9fc22e4f5f6bc26c5ede1b4ea61c6c863e7618a0:
+    resolution: {commit: 9fc22e4f5f6bc26c5ede1b4ea61c6c863e7618a0, repo: git@github.com:hirotomoki12345/Ultraviolet-psannetwork.git, type: git}
     version: 1.0.5
 
   uri-js@4.4.1:
@@ -950,7 +950,7 @@ snapshots:
 
   cookie@1.0.1: {}
 
-  cross-spawn@7.0.3:
+  cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
       shebang-command: 2.0.0
@@ -1001,7 +1001,7 @@ snapshots:
       '@types/json-schema': 7.0.15
       ajv: 6.12.6
       chalk: 4.1.2
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       debug: 4.3.7
       escape-string-regexp: 4.0.0
       eslint-scope: 8.1.0
@@ -1121,7 +1121,7 @@ snapshots:
 
   foreground-child@3.3.0:
     dependencies:
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
   forwarded@0.2.0: {}
@@ -1396,7 +1396,7 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
 
-  ultraviolet-static@https://codeload.github.com/titaniumnetwork-dev/Ultraviolet-Static/tar.gz/d9a30997be87d0f25f36c85e2fc851528d8f8e23: {}
+  ultraviolet-static@git+https://git@github.com:hirotomoki12345/Ultraviolet-psannetwork.git#9fc22e4f5f6bc26c5ede1b4ea61c6c863e7618a0: {}
 
   uri-js@4.4.1:
     dependencies:
